@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>opt-arena — method race</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <p class="kicker">NTU KhPI · MIIO methods</p>
+        <h1>opt-arena</h1>
+        <p class="lede">
+          Same function, several classical solvers. Paths, function-call counts, who reached the
+          well. The Python package is the source of truth; this page is the live sketch.
+        </p>
+      </header>
+      <div class="layout">
+        <aside class="panel">
+          <label>
+            Function
+            <select id="fn"></select>
+          </label>
+          <fieldset>
+            <legend>Methods</legend>
+            <div id="methods"></div>
+          </fieldset>
+          <button type="button" id="run">Race</button>
+          <button type="button" id="reset" class="ghost">Clear</button>
+          <table id="board">
+            <thead>
+              <tr>
+                <th></th>
+                <th>method</th>
+                <th>n<sub>f</sub></th>
+                <th>n<sub>g</sub></th>
+                <th>f*</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </aside>
+        <section class="stage">
+          <canvas id="cv" width="900" height="640"></canvas>
+          <p class="hint" id="hint"></p>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

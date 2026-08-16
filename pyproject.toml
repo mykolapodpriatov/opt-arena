@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opt-arena"
+version = "0.1.0"
+description = "Race classical 1D/nD minimization methods on the same function and compare paths, f-counts, and who converged."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Mykola Podpriatov" }]
+keywords = [
+    "optimization",
+    "golden-section",
+    "conjugate-gradient",
+    "levenberg-marquardt",
+    "bfgs",
+    "benchmark",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/mykolapodpriatov/opt-arena"
+Repository = "https://github.com/mykolapodpriatov/opt-arena"
+Issues = "https://github.com/mykolapodpriatov/opt-arena/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+opt-arena = "opt_arena.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opt_arena"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["opt_arena"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra"

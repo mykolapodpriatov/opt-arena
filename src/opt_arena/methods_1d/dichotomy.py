@@ -14,6 +14,8 @@ def dichotomy(
 ) -> RunResult:
     result = RunResult(method="dichotomy")
     a, b = lo, hi
+    if b < a:
+        a, b = b, a
     mid = 0.5 * (a + b)
     result.record([mid], counted.f([mid]))
 

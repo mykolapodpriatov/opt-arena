@@ -16,6 +16,8 @@ def golden(
 ) -> RunResult:
     result = RunResult(method="golden")
     a, b = lo, hi
+    if b < a:
+        a, b = b, a
     c = b - _PHI * (b - a)
     d = a + _PHI * (b - a)
     fc = counted.f([c])

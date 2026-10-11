@@ -34,4 +34,7 @@ def armijo_backtrack(
         if fi <= f0 + c * alpha * slope:
             return alpha
         alpha *= shrink
-    return alpha
+    # Every trial failed. `alpha` was shrunk after the last rejection and
+    # has not been tested. Returning it would hand the caller a step that
+    # increases f, and the nD methods treat any positive alpha as success.
+    return 0.0
